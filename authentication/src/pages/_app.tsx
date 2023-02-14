@@ -15,7 +15,11 @@ import {
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 
-import { RainbowKitSiweNextAuthProvider } from "@rainbow-me/rainbowkit-siwe-next-auth";
+import {
+  RainbowKitSiweNextAuthProvider,
+  GetSiweMessageOptions,
+} from "@rainbow-me/rainbowkit-siwe-next-auth";
+
 import { SessionProvider } from "next-auth/react";
 
 const ALCHEMY_ID = process.env.ALCHEMY_ID;
@@ -38,11 +42,15 @@ const wagmiClient = createClient({
   provider,
 });
 
+const getSiweMessageOptions: GetSiweMessageOptions = () => ({
+  statement: 'Sign in to WaltId Authentication Demo',
+});
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <SessionProvider refetchInterval={0} session={pageProps.session}>
-        <RainbowKitSiweNextAuthProvider>
+        <RainbowKitSiweNextAuthProvider getSiweMessageOptions={getSiweMessageOptions}>
           <RainbowKitProvider chains={chains}>
             <Component {...pageProps} />
           </RainbowKitProvider>
