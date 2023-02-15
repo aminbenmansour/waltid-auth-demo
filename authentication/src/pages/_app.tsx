@@ -22,11 +22,11 @@ import {
 
 import { SessionProvider } from "next-auth/react";
 
-const ALCHEMY_ID = process.env.ALCHEMY_ID;
+const ALCHEMY_ID = process.env.ALCHEMY_ID || "";
 const { chains, provider } = configureChains(
   [mainnet, polygon, optimism, arbitrum, polygonMumbai],
   [
-    alchemyProvider({ apiKey: "txclrnZjqRr87kBYAP8j2Ptdn2dwPsOc" }),
+    alchemyProvider({ apiKey: ALCHEMY_ID }),
     publicProvider(),
   ]
 );
