@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@moralisweb3/next": "^2.14.1",
     "@next/font": "13.1.6",
     "@rainbow-me/rainbowkit": "^0.9.0",
     "@rainbow-me/rainbowkit-siwe-next-auth": "^0.1.6",

@@ -12,7 +12,6 @@ import {
   arbitrum,
   polygonMumbai,
 } from "wagmi/chains";
-import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 
 import {
@@ -22,11 +21,9 @@ import {
 
 import { SessionProvider } from "next-auth/react";
 
-const ALCHEMY_ID = process.env.ALCHEMY_ID || "";
 const { chains, provider } = configureChains(
   [mainnet, polygon, optimism, arbitrum, polygonMumbai],
   [
-    alchemyProvider({ apiKey: ALCHEMY_ID }),
     publicProvider(),
   ]
 );

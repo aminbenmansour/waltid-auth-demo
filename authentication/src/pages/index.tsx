@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { getServerSession } from "next-auth/next";
 import { getSession } from "next-auth/react";
 import { getToken } from "next-auth/jwt";
 
@@ -9,7 +10,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 import Link from "next/link";
 
-export default function Home({ address }: AuthenticatedPageProps) {
+export default function Home({ address, session }: AuthenticatedPageProps) {
   return address ? (
     <>
       <ConnectButton />
